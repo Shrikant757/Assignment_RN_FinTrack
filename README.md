@@ -16,5 +16,7 @@ Features implemented
 Testing devices 
 1. Tested on iPhone 15(sim)
 2. Tested in Pixel 8 Pro(sim)
+
+
 Note.
 - Because of some time shortage I coudn't add more features.

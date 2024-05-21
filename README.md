@@ -14,4 +14,4 @@ Features implemented
 5. Used react-native-paper UI for app UI components(TextInput, Buttons, Text)
 
 Note.
-- Because of some time shortage I coudln't add more features.
+- Because of some time shortage I coudn't add more features.

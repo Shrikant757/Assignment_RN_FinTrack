@@ -13,5 +13,8 @@ Features implemented
 4. Created a predefined users json to authenticate user (only a login feature)
 5. Used react-native-paper UI for app UI components(TextInput, Buttons, Text)
 
+Testing devices 
+1. Tested on iPhone 15(sim)
+2. Tested in Pixel 8 Pro(sim)
 Note.
 - Because of some time shortage I coudn't add more features.

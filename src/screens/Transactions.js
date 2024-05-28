@@ -1,30 +1,28 @@
 import react, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Button } from 'react-native'
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import { AppButton } from '../components/AppButton'
-import { AddTransactions } from '../components/AddTransaction'
 import { useSelector } from 'react-redux'
 import moment from 'moment'
-import { useNavigation } from '@react-navigation/native'
 
-export const Transactions = () => {
-    const navigation = useNavigation()
+export const Transactions = ({ navigation }) => {
     const [transactions, setTransactions] = useState([])
-    const [openAddTransactionForm, setOpenAddTransactionForm] = useState(false)
-    const [editData, setEditData] = useState(null)
     const Alltransactions = useSelector(store => store.RootReducer.transaction)
 
     useEffect(() => {
-        console.log(`---------Alltransactions =  `, Alltransactions)
         setTransactions(Alltransactions)
     })
+
     const TransactionList = ({ item }) => {
         return (
-            <TouchableOpacity style={{
-                margin: 20, borderRadius: 16,
-                borderWidth: 1, borderBottomColor: "black",
-            }} onPress={() => { setOpenAddTransactionForm(true); setEditData(item) }}>
-                {item.Income && <Text>Income</Text>}
-                <View style={{ flexDirection: "row", padding: 10, justifyContent: "space-between" }}>
+            <TouchableOpacity style={styles.container}
+                onPress={() => {
+                    navigation.navigate('Add transaction', {
+                        editData: item
+                    })
+                }}
+            >
+                <Text>{item.Income ? "Income" : "Expense"}</Text>
+                <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                     <View>
                         <Text style={{ fontWeight: 'bold', fontSize: 50 }}>{item.amount} </Text>
                         <Text style={{ fontSize: 25, color: "black" }} >{item.category} </Text>
@@ -38,12 +36,8 @@ export const Transactions = () => {
     }
 
     return (
-        <View>
-            {
-                openAddTransactionForm &&
-                <AddTransactions open={openAddTransactionForm} editData={editData} onDismiss={() => { setOpenAddTransactionForm(false); setEditData(null) }} />
-            }
-            <AppButton ButtonName={'+ Add transaction'} onPress={() => setOpenAddTransactionForm(true)} />
+        <View style={{ margin: 20, flex: 1 }}>
+            <AppButton ButtonName={'+ Add transaction'} onPress={() => navigation.navigate('Add transaction')} />
             <FlatList
                 data={transactions}
                 renderItem={({ item }) => {
@@ -55,3 +49,14 @@ export const Transactions = () => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        marginVertical: 10, borderRadius: 16,
+        borderWidth: 1, borderBottomColor: "black",
+        padding: 10
+    },
+    IncomeText: {
+        margin: 10
+    }
+})

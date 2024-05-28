@@ -1,9 +1,9 @@
-import { View } from "react-native"
+import { StyleSheet, View } from "react-native"
 import { AppButton } from "../components/AppButton"
 
 export const Home = ({ navigation }) => {
     return (
-        <View>
+        <View style={styles.container}>
             <AppButton
                 ButtonName={'Transactions'}
                 onPress={() => navigation.navigate('Transactions')}
@@ -15,3 +15,9 @@ export const Home = ({ navigation }) => {
         </View>
     )
 }
+
+const styles = StyleSheet.create(({
+    container: {
+        margin: 20
+    }
+}))

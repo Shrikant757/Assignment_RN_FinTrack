@@ -4,7 +4,6 @@ import { Text } from "react-native-paper"
 
 export const Splash = ({ navigation }) => {
     useEffect(() => {
-        // const isUserLogedIn = await AsynS
         navigation.navigate('Login')
     }, [])
 
@@ -19,11 +18,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
-        padding: 32
     },
     title: {
         textAlign: "center",
         fontWeight: "bold",
-        fontSize: 50
     }
 })

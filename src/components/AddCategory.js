@@ -22,7 +22,7 @@ export const AddCategory = ({ open, onDismiss }) => {
                     <Text style={{ textAlign: "right" }} onPress={onDismiss}>cancel</Text>
                     <Text style={styles.title}>Categories</Text>
                     <Category onlyShowAllCategories={true} />
-                    <AppTextInput name={'Category'} inputType={'default'} value={category} onChangeText={text => setCategory(text)} />
+                    <AppTextInput name={'Enter Category'} inputType={'default'} value={category} onChangeText={text => setCategory(text)} />
                     <AppButton ButtonName={'Add'} onPress={() => onPressAdit()} />
                 </View>
             </KeyboardAvoidingView>

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Text, View } from "react-native"
+import { KeyboardAvoidingView, Platform, Text, View } from "react-native"
 import { Chip } from "react-native-paper"
 import { useSelector } from "react-redux"
 import { AddCategory } from "./AddCategory"
@@ -13,7 +13,7 @@ export const Category = ({ onSelected, onlyShowAllCategories }) => {
         onSelected(chip)
     };
     return (
-        <View style={{ paddingTop: 16 }}>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' && 'padding'} style={{ paddingTop: 16 }}>
             {onlyShowAllCategories ?
 
                 <View />
@@ -38,13 +38,13 @@ export const Category = ({ onSelected, onlyShowAllCategories }) => {
                                     }
                                 }}
                                 style={{ marginRight: 10, backgroundColor: 'yellow' }}
-                            // icon={selectable.includes(el) ? () => <MaterialCommunityIcons name="check" size={20} color="white" /> : null}
+                                icon={selectable.includes(el) ? () => <MaterialCommunityIcons name="check" size={20} color="white" /> : null}
                             >{el}</Chip>
                         )
                     })
                 }
                 {!onlyShowAllCategories && <Chip style={{ backgroundColor: "grey" }} onPress={() => setOpenAddCategoryPopUp(true)}>Add Category</Chip>}
             </View>
-        </View>
+        </KeyboardAvoidingView>
     )
 }

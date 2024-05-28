@@ -1,9 +1,9 @@
-import { KeyboardAvoidingView, Platform } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet } from 'react-native'
 import { TextInput } from 'react-native-paper'
 
 export const AppTextInput = ({ name, value, disable, inputType, ...res }) => {
     return (
-        <KeyboardAvoidingView>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' && 'padding'} style={styles.container}>
             <TextInput
                 mode='outlined'
                 label={name}
@@ -15,3 +15,9 @@ export const AppTextInput = ({ name, value, disable, inputType, ...res }) => {
         </KeyboardAvoidingView>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 10
+    }
+})
